@@ -25,7 +25,7 @@ interface DataTableProps<TData, TValue> {
   data: TData[];
 }
 
-const CompanyTable = <TData, TValue>({
+const ApplicationTable = <TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) => {
@@ -88,4 +88,4 @@ const CompanyTable = <TData, TValue>({
   );
 };
 
-export default CompanyTable;
+export default ApplicationTable;

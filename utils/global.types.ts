@@ -7,3 +7,25 @@ export type TCompnay = {
   location: string;
   createdAt: string;
 };
+
+export type TJobApplicationStatus =
+  | "Pending"
+  | "Accepted"
+  | "Rejected"
+  | "Applied"
+  | "Interviewing"
+  | "Offered";
+
+export type TJobApplication = {
+  id: string;
+  userId: string;
+  companyId: string;
+  jobTitle: string;
+  jobType: string;
+  jobLocation: string;
+  jobLink: string;
+  status: TJobApplicationStatus;
+  applicationDate: string;
+  deadline: string | null;
+  createdAt: string;
+};
