@@ -1,3 +1,5 @@
+@import "tailwindcss/preflight";
+@tailwind utilities;
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -41,6 +43,14 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
+  /* custom color  */
+  --color-prime50: var(--prime50);
+  --color-prime100: var(--prime100);
+  --color-prime200: var(--prime200);
+  --color-black100: var(--black100);
+  --color-black50: var(--black50);
+  --color-black20: var(--black20);
 }
 
 :root {
@@ -76,6 +86,14 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  /* custom colors  */
+  --prime50: #02b8a6;
+  --prime100: #009b94;
+  --prime200: #007f79;
+  --black100: #020817;
+  --black50: #070f2b;
+  --black20: #040b24;
 }
 
 .dark {
@@ -125,4 +143,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
+  scroll-padding: 3rem;
+}
+
+.active {
+  color: #009b94;
 }

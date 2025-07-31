@@ -1,11 +1,21 @@
+import SibeBar from "@/components/modules/Dashboard/SibeBar";
+import { Wrapper } from "@/components/ui";
 import { ReactNode } from "react";
 
 const DashboardLayout = ({ children }: { children: ReactNode }) => {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <main className="w-full max-w-md p-6 bg-white rounded shadow">
-        {children}
-      </main>
+    <div className="DashboardLayoutContainer bg-gray-50  ">
+      <Wrapper className="dashbaordWrapper min-h-screen mx-auto sm:flex py-4 px-2 gap-x-4 gap-y-6  ">
+        {/* sidebar section  */}
+
+        <div className="sideBarContainer  sm:w-64 ">
+          <SibeBar />
+        </div>
+        {/* sidebar section  */}
+
+        {/* children section  */}
+        <div className="contentSection w-full    ">{children}</div>
+      </Wrapper>
     </div>
   );
 };
