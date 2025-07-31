@@ -2,22 +2,40 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { CiLogin } from "react-icons/ci";
+import { ReactNode } from "react";
+import { AiOutlineHome } from "react-icons/ai";
+import { BsCalendarEvent } from "react-icons/bs";
+import { FaWpforms } from "react-icons/fa";
+import { FiLogOut } from "react-icons/fi";
 import { LuUser } from "react-icons/lu";
+import { MdBusiness } from "react-icons/md";
 
 type TUserDashboard = {
   label: string;
   link: string;
+  icon: ReactNode;
 };
 
 const userDashboardLinks: TUserDashboard[] = [
   {
+    label: "Home",
+    link: "/dashboard",
+    icon: <AiOutlineHome className="text-xl font-bold" />,
+  },
+  {
     label: "Company",
     link: "/dashboard/companies",
+    icon: <MdBusiness className="text-xl font-bold" />,
   },
   {
     label: "Applications",
     link: "/dashboard/applications",
+    icon: <FaWpforms className="text-xl font-bold" />,
+  },
+  {
+    label: "Interviws",
+    link: "/dashboard/interviews",
+    icon: <BsCalendarEvent className="text-xl font-bold" />,
   },
 ];
 
@@ -44,17 +62,20 @@ const SibeBar = () => {
               <Link
                 key={ind}
                 href={navItem?.link}
-                className={` flex items-center gap-x-1  my-4 text-lg font-medium hover:text-prime100  ${
+                className={`    text-lg font-medium hover:text-prime100  ${
                   pathname === navItem?.link ? "active" : ""
                 } `}
               >
-                {navItem?.label}{" "}
+                <div className="linksContainer flex items-center gap-x-2  my-6  hover:text-prime100 ">
+                  {navItem.icon}
+                  <p>{navItem.label}</p>
+                </div>
               </Link>
             ))}
         </div>
 
-        <div className="  mt-6 flex items-center gap-x-1  cursor-pointer font-medium p-1 border border-gray-300  ">
-          <CiLogin className=" text-xl  " />
+        <div className="  mt-6 flex items-center gap-x-1  cursor-pointer font-medium p-2 border border-gray-400   ">
+          <FiLogOut className="text-xl" />
           Logout
         </div>
       </nav>
