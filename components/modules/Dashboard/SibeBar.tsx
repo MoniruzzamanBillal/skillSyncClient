@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ReactNode } from "react";
 import { AiOutlineHome } from "react-icons/ai";
-import { BsCalendarEvent } from "react-icons/bs";
 import { FaWpforms } from "react-icons/fa";
 import { FiLogOut } from "react-icons/fi";
 import { LuUser } from "react-icons/lu";
@@ -32,11 +31,11 @@ const userDashboardLinks: TUserDashboard[] = [
     link: "/dashboard/applications",
     icon: <FaWpforms className="text-xl font-bold" />,
   },
-  {
-    label: "Interviws",
-    link: "/dashboard/interviews",
-    icon: <BsCalendarEvent className="text-xl font-bold" />,
-  },
+  // {
+  //   label: "Interviws",
+  //   link: "/dashboard/interviews",
+  //   icon: <BsCalendarEvent className="text-xl font-bold" />,
+  // },
 ];
 
 const SibeBar = () => {
