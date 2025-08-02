@@ -1,4 +1,4 @@
-import SibeBar from "@/components/modules/Dashboard/SibeBar";
+import SideBar from "@/components/modules/Dashboard/SideBar";
 import { Wrapper } from "@/components/ui";
 import { ReactNode } from "react";
 
@@ -9,7 +9,7 @@ const DashboardLayout = ({ children }: { children: ReactNode }) => {
         {/* sidebar section  */}
 
         <div className="sideBarContainer  sm:w-64 ">
-          <SibeBar />
+          <SideBar />
         </div>
         {/* sidebar section  */}
 

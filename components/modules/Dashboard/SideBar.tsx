@@ -38,10 +38,10 @@ const userDashboardLinks: TUserDashboard[] = [
   // },
 ];
 
-const SibeBar = () => {
+const SideBar = () => {
   const pathname = usePathname();
 
-  console.log(pathname);
+  // console.log(pathname);
 
   return (
     <div className="bg-gray-100 border border-gray-300 rounded-md p-4 sticky top-[0.2rem] shadow-md  ">
@@ -83,4 +83,4 @@ const SibeBar = () => {
   );
 };
 
-export default SibeBar;
+export default SideBar;
