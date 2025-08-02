@@ -174,18 +174,14 @@ export const ApplicationColumn: ColumnDef<TJobApplication>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem>
-              <Link
-                href={`/dashboard/admin/course-detail/${rowData?.companyId}`}
-              >
+              <Link href={`/dashboard/applications/12345asdf`}>
                 View Details
               </Link>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
-              <Link
-                href={`/dashboard/admin/update-course/${rowData?.companyId}`}
-              >
-                Update Course
+              <Link href={`/dashboard/applications/updateApplication/123`}>
+                Update Application
               </Link>
             </DropdownMenuItem>
           </DropdownMenuContent>

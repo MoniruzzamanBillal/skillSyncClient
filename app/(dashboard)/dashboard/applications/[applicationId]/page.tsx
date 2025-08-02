@@ -13,11 +13,12 @@ const ApplicationDetail = async ({ params }: TProps) => {
 
   return (
     <div className="mainContainer">
-      <h1>application detail page </h1>
-      <h1>application detail page </h1>
-      <h1>application detail page </h1>
-      <h1>application detail page </h1>
-      <h1>application detail page </h1>
+      <div className="applicationDetailWrapper bg-gray-100/90 border border-gray-300  shadow rounded-md p-3 ">
+        <h1>application detail </h1>
+        <h1>application detail </h1>
+        <h1>application detail </h1>
+        <h1>application detail </h1>
+      </div>
     </div>
   );
 };
