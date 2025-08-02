@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { NavigateButton } from "@/components/shared";
 import { ApplicationColumn } from "@/DataTables/Application/ApplicationColumn";
 import ApplicationTable from "@/DataTables/Application/ApplicationTable";
 import { applicationData } from "@/utils/demo.data";
@@ -11,12 +11,10 @@ const Application = () => {
           Manage Applications
         </h3>
 
-        <Button
-          // onClick={() => navigate("/dashboard/admin/add-course")}
-          className="mb-4 bg-prime100 hover:bg-prime200 cursor-pointer"
-        >
-          Add Application
-        </Button>
+        <NavigateButton
+          label="Add Application"
+          route="/dashboard/applications/addApplication"
+        />
 
         {/* table section  */}
         <div className="Tablecontainer mx-auto py-10">

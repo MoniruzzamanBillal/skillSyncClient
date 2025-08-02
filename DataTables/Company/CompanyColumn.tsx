@@ -97,7 +97,7 @@ export const CompanyColumn: ColumnDef<TCompnay>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem>
-              <Link href={`/dashboard/companies`}>View Details</Link>
+              <Link href={`/dashboard/companies/1212`}>View Details</Link>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
