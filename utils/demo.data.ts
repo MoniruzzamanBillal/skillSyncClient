@@ -1,6 +1,6 @@
-import { TJobApplication } from "./global.types";
+import { TCompnay, TJobApplication } from "./global.types";
 
-export const companyData = [
+export const companyData: TCompnay[] = [
   {
     id: "1d3f93b1-b2f2-4cbb-9d61-a7b30ec8e151",
     userId: "11111111-1111-1111-1111-111111111111",

@@ -1,3 +1,13 @@
+export type JobType = "Remote" | "Onsite" | "Hybrid";
+export type InterviewOutcome = "Pass" | "Fail" | "Pending";
+export type TJobApplicationStatus =
+  | "Pending"
+  | "Accepted"
+  | "Rejected"
+  | "Applied"
+  | "Interviewing"
+  | "Offered";
+
 export type TCompnay = {
   id: string;
   userId: string;
@@ -8,24 +18,25 @@ export type TCompnay = {
   createdAt: string;
 };
 
-export type TJobApplicationStatus =
-  | "Pending"
-  | "Accepted"
-  | "Rejected"
-  | "Applied"
-  | "Interviewing"
-  | "Offered";
-
 export type TJobApplication = {
   id: string;
   userId: string;
   companyId: string;
   jobTitle: string;
-  jobType: string;
+  jobType: JobType;
   jobLocation: string;
   jobLink: string;
   status: TJobApplicationStatus;
   applicationDate: string;
   deadline: string | null;
   createdAt: string;
+};
+
+export type TInterview = {
+  id: string;
+  applicationId: string;
+  roundName: string;
+  date: string;
+  outcome: InterviewOutcome;
+  notes: string;
 };
