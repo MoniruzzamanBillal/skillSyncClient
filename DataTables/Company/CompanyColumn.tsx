@@ -102,7 +102,7 @@ export const CompanyColumn: ColumnDef<TCompnay>[] = [
             <DropdownMenuSeparator />
             <DropdownMenuItem>
               <Link href={`/dashboard/companies/updateCompany/123`}>
-                Update Course
+                Update Company
               </Link>
             </DropdownMenuItem>
           </DropdownMenuContent>

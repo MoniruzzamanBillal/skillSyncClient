@@ -62,7 +62,7 @@ const CompanyDetail = () => {
   }
 
   return (
-    <section className="mainContainer py-8 ">
+    <section className="mainContainer  ">
       <div className="companyDetailWrapper bg-gray-100/90 border border-gray-300 shadow rounded-md p-3  ">
         {/* company detail section  */}
 
