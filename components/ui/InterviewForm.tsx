@@ -4,7 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { InterviewOutcome } from "@/utils/global.types";
+import { InterviewOutcome, TInterview } from "@/utils/global.types";
+import { useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import Select from "react-select";
 
@@ -14,26 +15,46 @@ const interviewOutcomeOptions = [
   { value: "Pending", label: "Pending" },
 ];
 
-const AddInterviewForm = ({ applicationId, onAddInterview, onClose }) => {
+type TFormProps = {
+  applicationId: string;
+  initialData?: TInterview;
+  onSaveInterview: (interviewData: TInterview) => void;
+  onClose: () => void;
+};
+
+const InterviewForm = ({
+  applicationId,
+  onSaveInterview,
+  onClose,
+  initialData,
+}: TFormProps) => {
   const {
     register,
     handleSubmit,
     control,
     formState: { errors, isSubmitting },
     reset,
-  } = useForm();
+  } = useForm({ defaultValues: initialData });
 
-  const handleAddInterview = async (data) => {
+  const handleSubmitInterview = async (data) => {
     console.log(applicationId);
     console.log(data);
-    onAddInterview(data);
+    onSaveInterview(data);
     reset();
     onClose();
   };
 
+  useEffect(() => {
+    if (initialData) {
+      reset(initialData);
+    } else {
+      reset();
+    }
+  }, [initialData, reset]);
+
   return (
     <form
-      onSubmit={handleSubmit(handleAddInterview)}
+      onSubmit={handleSubmit(handleSubmitInterview)}
       className="flex flex-col gap-y-4"
     >
       <div className="flex flex-col gap-y-1.5">
@@ -116,4 +137,4 @@ const AddInterviewForm = ({ applicationId, onAddInterview, onClose }) => {
   );
 };
 
-export default AddInterviewForm;
+export default InterviewForm;

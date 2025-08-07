@@ -26,12 +26,13 @@ import {
   FileTextIcon,
   LinkIcon,
   MapPinIcon,
+  PencilIcon,
   TagIcon,
 } from "lucide-react";
 import { useParams } from "next/navigation";
 import { useState } from "react";
 
-import { AddInterviewForm } from "@/components/ui";
+import { InterviewForm } from "@/components/ui";
 import Select from "react-select";
 
 const statusOptions = [
@@ -92,6 +93,7 @@ const ApplicationDetail = () => {
   const [application, setApplication] = useState(mockApplication);
   const [interviews, setInterviews] = useState(mockInterviews);
   const [isAddInterviewOpen, setIsAddInterviewOpen] = useState(false);
+  const [isUpdateInterviewOpen, setIsUpdateInterviewOpen] = useState(false);
 
   console.log("application id = ");
 
@@ -180,9 +182,9 @@ const ApplicationDetail = () => {
                     <ModalOrDrawerTitle>Add New Interview</ModalOrDrawerTitle>
                   </ModalOrDrawerHeader>
                   <div className="p-4 overflow-auto">
-                    <AddInterviewForm
+                    <InterviewForm
                       applicationId={application.id}
-                      onAddInterview={handleAddInterview}
+                      onSaveInterview={handleAddInterview}
                       onClose={() => setIsAddInterviewOpen(false)}
                     />
                   </div>
@@ -249,42 +251,74 @@ const ApplicationDetail = () => {
             </p>
           ) : (
             <div className="space-y-6  ">
-              {interviews
-                .sort(
-                  (a, b) =>
-                    new Date(a.date).getTime() - new Date(b.date).getTime()
-                )
-                .map((interview) => (
-                  <Card
-                    key={interview.id}
-                    className="bg-white border border-gray-300 shadow my-3 "
-                  >
-                    <CardHeader className="pb-2">
-                      <CardTitle className="text-lg flex items-center gap-2">
-                        <FileTextIcon className="h-5 w-5 text-prime50" />
-                        {interview.roundName}
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="text-sm text-gray-700">
-                      <p className="flex items-center gap-1 mb-1">
-                        <CalendarIcon className="h-4 w-4 text-gray-500" />
-                        <span className="font-semibold">Date:</span>{" "}
-                        {interview.date}
+              {interviews?.map((interview) => (
+                <Card
+                  key={interview.id}
+                  className="bg-white border border-gray-300 shadow my-3 "
+                >
+                  <CardHeader className="pb-2 flex flex-row items-center justify-between">
+                    {" "}
+                    {/* Added flex for alignment */}
+                    <CardTitle className="text-lg flex items-center gap-2">
+                      <FileTextIcon className="h-5 w-5 text-prime50" />
+                      {interview.roundName}
+                    </CardTitle>
+                    {/*  */}
+                    <ModalOrDrawer
+                      open={isUpdateInterviewOpen}
+                      onOpenChange={setIsUpdateInterviewOpen}
+                    >
+                      <ModalOrDrawerTrigger asChild>
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          // onClick={() => handleOpenEditInterview(interview)}
+                          className="text-gray-500 hover:text-prime100"
+                          aria-label={`Edit ${interview.roundName} interview`}
+                        >
+                          <PencilIcon className="h-5 w-5" />
+                        </Button>
+                      </ModalOrDrawerTrigger>
+                      <ModalOrDrawerContent
+                        className={isMobile ? "h-[80vh]" : "max-w-md"}
+                      >
+                        <ModalOrDrawerHeader>
+                          <ModalOrDrawerTitle>
+                            Update interview
+                          </ModalOrDrawerTitle>
+                        </ModalOrDrawerHeader>
+                        <div className="p-4 overflow-auto">
+                          <InterviewForm
+                            applicationId={application.id}
+                            onSaveInterview={handleAddInterview}
+                            onClose={() => setIsAddInterviewOpen(false)}
+                            initialData={interview}
+                          />
+                        </div>
+                      </ModalOrDrawerContent>
+                    </ModalOrDrawer>
+                    {/*  */}
+                  </CardHeader>
+                  <CardContent className="text-sm text-gray-700">
+                    <p className="flex items-center gap-1 mb-1">
+                      <CalendarIcon className="h-4 w-4 text-gray-500" />
+                      <span className="font-semibold">Date:</span>{" "}
+                      {interview.date}
+                    </p>
+                    <p className="flex items-center gap-1 mb-1">
+                      <TagIcon className="h-4 w-4 text-gray-500" />
+                      <span className="font-semibold">Outcome:</span>{" "}
+                      {interview.outcome}
+                    </p>
+                    {interview.notes && (
+                      <p className="mt-2">
+                        <span className="font-semibold">Notes:</span>{" "}
+                        {interview.notes}
                       </p>
-                      <p className="flex items-center gap-1 mb-1">
-                        <TagIcon className="h-4 w-4 text-gray-500" />
-                        <span className="font-semibold">Outcome:</span>{" "}
-                        {interview.outcome}
-                      </p>
-                      {interview.notes && (
-                        <p className="mt-2">
-                          <span className="font-semibold">Notes:</span>{" "}
-                          {interview.notes}
-                        </p>
-                      )}
-                    </CardContent>
-                  </Card>
-                ))}
+                    )}
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           )}
         </section>
