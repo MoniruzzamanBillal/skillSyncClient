@@ -1,6 +1,10 @@
 "use client";
 
-import { StatsCard } from "@/components/ui";
+import {
+  ApplicationsBarChart,
+  StatsCard,
+  StatusPieChart,
+} from "@/components/ui";
 import {
   TBarChartData,
   TDashboardStats,
@@ -69,9 +73,7 @@ const DashboardHomePage = () => {
   return (
     <div className="dashboardPageContainer">
       <div className="dashboardWrapper bg-gray-100/90 border border-gray-300  shadow rounded-md p-3 ">
-        <h1 className="font-bold text-3xl md:text-4xl mb-8 text-center">
-          Your Dashboard
-        </h1>
+        <h1 className="font-bold text-3xl  mb-8 text-center">Statistics</h1>
 
         {/* Stats Cards */}
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 mb-8">
@@ -99,6 +101,12 @@ const DashboardHomePage = () => {
             icon={XCircleIcon}
             description="Keep pushing!"
           />
+        </div>
+
+        {/* Charts Section */}
+        <div className="grid gap-4 lg:grid-cols-2 mb-8">
+          <StatusPieChart data={mockPieChartData} />
+          <ApplicationsBarChart data={mockBarChartData} />
         </div>
 
         <h1>dashboard page </h1>

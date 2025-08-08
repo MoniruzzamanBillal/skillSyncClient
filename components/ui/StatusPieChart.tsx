@@ -22,7 +22,7 @@ const StatusPieChart = ({ data }: TStatusPieChartProps) => {
   const hasData = data && data.some((item) => item.value > 0);
 
   return (
-    <Card className="h-full bg-white shadow-sm">
+    <Card className="h-full bg-white shadow border border-gray-300 ">
       <CardHeader>
         <CardTitle className="text-lg">Application Status Overview</CardTitle>
       </CardHeader>

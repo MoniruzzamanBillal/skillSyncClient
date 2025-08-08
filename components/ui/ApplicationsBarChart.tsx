@@ -22,7 +22,7 @@ const ApplicationsBarChart = ({ data }: TApplicationsBarChartProps) => {
   const hasData = data && data.some((item) => item.applications > 0);
 
   return (
-    <Card className="h-full bg-white shadow-sm">
+    <Card className="h-full bg-white shadow border border-gray-300">
       <CardHeader>
         <CardTitle className="text-lg">Applications Over Time</CardTitle>
       </CardHeader>
