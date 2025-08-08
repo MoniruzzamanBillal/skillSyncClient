@@ -44,7 +44,7 @@ const SideBar = () => {
   // console.log(pathname);
 
   return (
-    <div className="bg-gray-100 border border-gray-300 rounded-md p-4 sticky top-[0.2rem] shadow-md  ">
+    <div className="bg-gray-100 border border-gray-300 rounded-md p-4 sticky top-[0.2rem] shadow  ">
       <div className="flex items-center space-x-2 border-b-4 border-prime50 pb-2 print:hidden">
         <div className=" p-2 rounded-full bg-slate-200 cursor-pointe   ">
           <LuUser className=" text-2xl font-bold text-gray-800 " />

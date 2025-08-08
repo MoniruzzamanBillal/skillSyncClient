@@ -8,7 +8,7 @@ const DashboardLayout = ({ children }: { children: ReactNode }) => {
       <Wrapper className="dashbaordWrapper min-h-screen mx-auto sm:flex py-4 px-2 gap-x-4 gap-y-6  ">
         {/* sidebar section  */}
 
-        <div className="sideBarContainer  sm:w-64 ">
+        <div className="sideBarContainer mb-6 sm:mb-0  sm:w-64 ">
           <SideBar />
         </div>
         {/* sidebar section  */}
