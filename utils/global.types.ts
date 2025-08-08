@@ -40,3 +40,20 @@ export type TInterview = {
   outcome: InterviewOutcome;
   notes: string;
 };
+
+export type TDashboardStats = {
+  totalApplications: number;
+  interviewsScheduled: number;
+  offersReceived: number;
+  rejectedApplications: number;
+};
+
+export type TPieChartData = {
+  name: TJobApplicationStatus;
+  value: number;
+};
+
+export type TBarChartData = {
+  month: string;
+  applications: number;
+};
