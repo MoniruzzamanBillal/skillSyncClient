@@ -1,5 +1,9 @@
 "use client";
 
+import { format } from "date-fns";
+
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
 import {
   ApplicationsBarChart,
   StatsCard,
@@ -18,6 +22,7 @@ import {
   CheckCircleIcon,
   XCircleIcon,
 } from "lucide-react";
+import Link from "next/link";
 
 // --- Mock Data for Demonstration ---
 const mockStats: TDashboardStats = {
@@ -50,22 +55,27 @@ const mockBarChartData: TBarChartData[] = [
   { month: "Dec", applications: 0 },
 ];
 
-const mockUpcomingInterviews: TInterview[] = [
+type TInterviewWithCompany = TInterview & {
+  companyName: string;
+};
+const mockUpcomingInterviews: TInterviewWithCompany[] = [
   {
     id: "int003",
     applicationId: "app124",
-    roundName: "Google - Final Round",
+    roundName: " Final Round",
     date: "2025-08-10",
     outcome: "Pending",
     notes: "Prepare for system design questions.",
+    companyName: "Google",
   },
   {
     id: "int004",
     applicationId: "app125",
-    roundName: "Microsoft - Technical Screen",
+    roundName: " Technical Screen",
     date: "2025-08-15",
     outcome: "Pending",
     notes: "Review data structures and algorithms.",
+    companyName: "Microsoft",
   },
 ];
 
@@ -109,11 +119,49 @@ const DashboardHomePage = () => {
           <ApplicationsBarChart data={mockBarChartData} />
         </div>
 
-        <h1>dashboard page </h1>
-        <h1>dashboard page </h1>
-        <h1>dashboard page </h1>
-        <h1>dashboard page </h1>
-        <h1>dashboard page </h1>
+        {/* Upcoming Interviews Section */}
+        <Card className="bg-gray-50 border border-gray-300 shadow rounded-md p-3">
+          <CardHeader>
+            <CardTitle className="text-xl md:text-2xl">
+              Upcoming Interviews
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            {mockUpcomingInterviews.length === 0 ? (
+              <p className="text-gray-600">
+                No upcoming interviews. Keep applying!
+              </p>
+            ) : (
+              <div className="space-y-4">
+                {mockUpcomingInterviews.map((interview) => (
+                  <Link
+                    key={interview.id}
+                    href={`/dashboard/applications/${interview.applicationId}`}
+                    className="block"
+                  >
+                    <div className="bg-gray-100/90 my-4 border border-gray-400 rounded-md p-4 shadow-sm hover:shadow-md transition-shadow duration-200">
+                      <h3 className="font-semibold text-lg mb-1">
+                        {interview?.companyName &&
+                          `${interview?.companyName} - `}{" "}
+                        {interview.roundName}
+                      </h3>
+                      <p className="text-gray-900 flex items-center gap-2">
+                        <CalendarCheckIcon className="h-4 w-4 text-gray-500" />
+                        <span className="font-semibold">Date:</span>{" "}
+                        {format(new Date(interview.date), "dd-MMM-yyy")}
+                      </p>
+                      {interview.notes && (
+                        <p className="text-sm text-gray-800 mt-1 truncate">
+                          Notes: {interview.notes}
+                        </p>
+                      )}
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            )}
+          </CardContent>
+        </Card>
       </div>
     </div>
   );

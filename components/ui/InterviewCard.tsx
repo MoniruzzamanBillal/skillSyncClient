@@ -1,9 +1,9 @@
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { TInterview } from "@/utils/global.types";
-
 import useIsMobile from "@/hooks/use-mobile";
+import { TInterview } from "@/utils/global.types";
+import { format } from "date-fns";
 import { CalendarIcon, FileTextIcon, PencilIcon, TagIcon } from "lucide-react";
 
 import {
@@ -93,18 +93,21 @@ const InterviewCard = ({ interview, applicationId, companyName }: TProps) => {
         </ModalOrDrawer>
         {/*  */}
       </CardHeader>
-      <CardContent className="text-sm text-gray-700">
+      <CardContent className="text-sm text-gray-900">
         <p className="flex items-center gap-1 mb-1">
-          <CalendarIcon className="h-4 w-4 text-gray-500" />
-          <span className="font-semibold">Date:</span> {interview.date}
+          <CalendarIcon className="h-4 w-4 text-gray-600" />
+          <span className="font-semibold">Date:</span>
+
+          {format(new Date(interview.date), "dd-MMM-yyy")}
         </p>
         <p className="flex items-center gap-1 mb-1">
-          <TagIcon className="h-4 w-4 text-gray-500" />
+          <TagIcon className="h-4 w-4 text-gray-600" />
           <span className="font-semibold">Outcome:</span> {interview.outcome}
         </p>
         {interview.notes && (
           <p className="mt-2">
-            <span className="font-semibold">Notes:</span> {interview.notes}
+            <span className="font-semibold text-gray-900 ">Notes:</span>{" "}
+            {interview.notes}
           </p>
         )}
       </CardContent>
